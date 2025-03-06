@@ -30,8 +30,14 @@ EXPOSE 8080
 CMD ["node", "app.js"]
 
 
-# from command prompt, build the docker image
+
+2. Build the docker image
 docker build -t my-node-app .
+
+
+3. Running a Docker Container
+docker run -d -p 8080:8080 my-node-app
+
 
 ---------------------------------------
 

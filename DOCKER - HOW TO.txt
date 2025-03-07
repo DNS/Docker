@@ -7,8 +7,19 @@ docker run -d -p 80:80 nginx
 
 ---------------------------------------
 
+▪ Docker Images are like blueprints or templates. They define what’s inside a container but are not active themselves.
+▪ Docker Containers are the live, running instances created from Docker Images. You can think of containers as “active blueprints” that execute your code in a consistent and isolated environment.
 
-1. Create 'Dockerfile', then Edit:
+
+
+1. Install Docker
+apt-get install docker-ce docker-ce-cli containerd.io
+systemctl start docker
+systemctl enable docker
+docker --version
+docker run hello-world
+
+2. Create new file 'Dockerfile', then Edit:
 
 # Use an official Node.js runtime as a base image
 FROM node:14
@@ -23,7 +34,7 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the application port
+# Expose the network port
 EXPOSE 8080
 
 # Define the command to run the application
@@ -31,12 +42,26 @@ CMD ["node", "app.js"]
 
 
 
-2. Build the docker image
+3. [TERMINAL] Build the docker image
 docker build -t my-node-app .
 
 
-3. Running a Docker Container
+4. [TERMINAL] Running a Docker Container
 docker run -d -p 8080:8080 my-node-app
+
+
+5. Managing Docker Containers
+docker ps: Lists all running containers.
+docker ps -a: Lists all containers, including stopped ones.
+docker stop [container_id]: Stops a running container.
+docker start [container_id]: Starts a stopped container.
+docker rm [container_id]: Removes a stopped container.
+docker logs [container_id]: View the logs of a running container.
+
+
+
+
+
 
 
 ---------------------------------------
